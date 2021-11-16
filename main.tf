@@ -3,11 +3,20 @@ provider "azurerm" {
     features {}
 }
 
+terraform {
+  backend "azurerm" {
+      resource_group_name   = "tf_rg_blobstorage"
+      storage_account_name  = "tfstorageaccountwm"
+      container_name        = "tfstate"
+      key                   = "terraform.tfstate"
+  }
+}
+
 resource "azurerm_resource_group" "terraform_test" {
     name = "tf_rg"
     location =  "germanywestcentral"
 }
-# create container group
+# create container groupgit 
 resource "azurerm_container_group" "tf_ct_grp" {
     name            = "wheather_grp"
     location        = azurerm_resource_group.terraform_test.location
