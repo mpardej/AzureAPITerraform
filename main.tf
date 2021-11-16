@@ -23,7 +23,7 @@ resource "azurerm_container_group" "tf_ct_grp" {
     resource_group_name = azurerm_resource_group.terraform_test.name
 
     ip_address_type     = "public"
-    dns_name_label      = "wheatherapitf"
+    dns_name_label      = "wheatherapitf1"
     os_type             = "Linux"  
 
     container {
