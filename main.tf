@@ -11,6 +11,10 @@ terraform {
       key                   = "terraform.tfstate"
   }
 }
+variable "imagebuild" {
+    type        = string
+    desciption  = "Latest build"
+}
 
 resource "azurerm_resource_group" "terraform_test" {
     name = "tf_rg"
@@ -28,7 +32,7 @@ resource "azurerm_container_group" "tf_ct_grp" {
 
     container {
         name    = "wheather"
-        image   = "mpardej/wheather"
+        image   = "mpardej/wheather:${var.imagebuild}"
         cpu     = "1"
         memory  = "1"
 
